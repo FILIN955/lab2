@@ -1,28 +1,30 @@
 print('Вариант 9')
 print('1 task, флаг Финляндии')
-print(u"\u001b[47m     \u001b[44m  \u001b[47m             \u001b[0m")
-print(u"\u001b[47m     \u001b[44m  \u001b[47m             \u001b[0m")
-print(u"\u001b[44m                    \u001b[0m")
-print(u"\u001b[47m     \u001b[44m  \u001b[47m             \u001b[0m")
-print(u"\u001b[47m     \u001b[44m  \u001b[47m             \u001b[0m")
+WIDTH = 13
+WIDTH2 = 20
+print(f"\u001b[47m     \u001b[44m  \u001b[47m{' '*WIDTH}\u001b[0m")
+print(f"\u001b[47m     \u001b[44m  \u001b[47m{' '*WIDTH}\u001b[0m")
+print(f"\u001b[44m{' '*WIDTH2}\u001b[0m")
+print(f"\u001b[47m     \u001b[44m  \u001b[47m{' '*WIDTH}\u001b[0m")
+print(f"\u001b[47m     \u001b[44m  \u001b[47m{' '*WIDTH}\u001b[0m")
 
 print('2 task, узор i')
-x = u"\u001b[41m \u001b[0m"
-kol = 7 #количество узора
+x = "\u001b[41m \u001b[0m"
+kol = 7
 for i in range(4, 6):
     for j in range(kol):
-        print(' ' * (6 - i) + (x * (2 * i)) + (' ' * (6 - i)), end = '')
+        print(' ' * (6 - i) + (x * (2 * i)) + (' ' * (6 - i)), end='')
     print()
 for i in range(6, 3, -1):
     for j in range(kol):
-        print(' ' * (6 - i) + (x * (2 * i )) + (' ' * (6 - i)), end = '')
+        print(' ' * (6 - i) + (x * (2 * i)) + (' ' * (6 - i)), end='')
     print()
 
 print('3 task, y = x/2')
 print('y ↑')
-for y in range (12, 0, -1):
+for y in range(12, 0, -1):
     x = y * 2
-    print('  |' + x * ' '+ '/')
+    print('  |' + x * ' '+'/')
 print('  |' + '─ ' * 13 + '→x')
 
 print('task 4, от 5 до 10 и числа от -5 до -10, остальные отбросить')
@@ -53,3 +55,27 @@ for i in range(100, 0, -1):
     else:
         print('|')
 print("0 " + "- " * 2 + '→')
+
+# Исправление:
+'''Префикс u используется для указания, что строковый литерал является строкой в формате Unicode в Python 2. 
+Однако в Python 3 все строки по умолчанию интерпретируются как строки в формате Unicode, поэтому префикс u стал необязательным и можно обойтись без него.'''
+
+class Pattern:
+    def __init__(self, color, repetitions):
+        self.color = color
+        self.repetitions = repetitions
+
+    def show(self):
+        x = f"\u001b[{self.color} \u001b[0m"
+        for i in range(4, 6):
+            for j in range(self.repetitions):
+                print(' ' * (6 - i) + (x * (2 * i)) + (' ' * (6 - i)), end='')
+            print()
+        for i in range(6, 3, -1):
+            for j in range(self.repetitions):
+                print(' ' * (6 - i) + (x * (2 * i)) + (' ' * (6 - i)), end='')
+            print()
+
+
+pattern_instance = Pattern('44m', 10)
+pattern_instance.show()
